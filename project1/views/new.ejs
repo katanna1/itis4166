@@ -1,0 +1,51 @@
+<%- include('./partials/header.ejs')%>
+
+        <!-- MAIN -->
+            <main>
+                <h2>Sell at Cryptic Jewelry!</h2>
+                
+                <div class="form-container">
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="condition">Condition:</label>
+                            <select id="condition" name="condition" required>
+                                <option value="" disabled selected>Select condition</option>
+                                <option value="new">New</option>
+                                <option value="like-new">Like New</option>
+                                <option value="good">Good</option>
+                                <option value="fair">Fair</option>
+                                <option value="poor">Poor</option>
+                            </select>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title" placeholder="Earrings, Necklace, etc." required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="seller">Seller:</label>
+                            <input type="text" id="seller" name="seller" placeholder="John Doe" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="price">Price:</label>
+                            <input type="number" id="price" name="price" min="0" step="0.01" placeholder="0.00" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="details">Details:</label>
+                            <textarea id="details" name="details" rows="4" required placeholder="Description of the item."></textarea>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="image">Image:</label>
+                            <input type="file" id="image" name="image" accept="image/*" required>
+                        </div>
+                
+                        <button type="submit" class="new-button">Submit</button>
+                    </form>
+                </div>
+            </main>
+
+<%- include('./partials/footer.ejs')%>

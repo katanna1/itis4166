@@ -1,0 +1,12 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <%if(products.length) {%>
+            <p>Select a product: </p>
+            <%products.forEach(product=>{%>
+                <a href ="/products/<%= product.id%>"><p><%= product.title%></p></a>
+            <%});
+        } else {%>
+            <p>There are no products to display.</p>
+        <%}%>
+    </div>
+<%- include('../partials/footer.ejs')%>
