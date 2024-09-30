@@ -3,23 +3,50 @@ const { v4:uuidv4 } = require('uuid');
 const products = [
     {
         id: '1',
-        title: 'A funny ',
-        content: 'Hhfdhdhf haskdh jaksks hwoodpfp jsdkfdsls.',
-        author: 'Katrina',
+        title: 'Black Pearl Sun Necklace',
+        condition: 'New',
+        price: '100',
+        imageUrl: '/media/items/item1.jpg',
         createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT)
     },
     {
         id: '2',
-        title: 'Itis raining',
-        content: 'Blah  hhdfhjdsjdfsjfd.',
-        author: 'Wilson',
+        title: 'Silver Chunky Heart Bangle',
+        condition: 'Good',
+        price: '50',
+        imageUrl: '/media/items/item2.jpg',
         createdAt: DateTime.local(2000, 9, 10, 0).toLocaleString(DateTime.DATETIME_SHORT)
     },
     {
         id: '3',
-        title: 'Learning NBAD',
-        content: 'exercise 4 completion thing',
-        author: 'Katrina Wilson',
+        title: 'Black Onyx Mesh Skull Ring',
+        condition: 'Like New',
+        price: '20',
+        imageUrl: '/media/items/item3.jpg',
+        createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT)
+    },
+    {
+        id: '4',
+        title: 'Black Cross Earrings',
+        condition: 'New',
+        price: '70',
+        imageUrl: '/media/items/item4.jpg',
+        createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT)
+    },
+    {
+        id: '5',
+        title: 'Black Lace Cross Choker',
+        condition: 'Good',
+        price: '30',
+        imageUrl: '/media/items/item5.jpg',
+        createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT)
+    },
+    {
+        id: '6',
+        title: 'Black Cross Earrings',
+        condition: 'New',
+        price: '80',
+        imageUrl: '/media/items/item6.jpg',
         createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT)
     }
 ];
@@ -40,7 +67,9 @@ exports.updateById = function(id, newProduct) {
     let product = products.find(product=>product.id === id);
     if(product) {
         product.title = newProduct.title;
-        product.content = newProduct.content;
+        product.condition = newProduct.condition;
+        product.price = newProduct.price;
+        product.imageUrl = newProduct.imageUrl;
         return true;
     } else {
         return false;

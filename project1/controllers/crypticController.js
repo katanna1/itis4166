@@ -1,4 +1,6 @@
 const model = require('../models/cryptic');
+const fileUpload = require('../public/middleware/fileUpload'); 
+
 
 //GET /products: send all products to the user
 exports.index = (req, res)=>{
@@ -15,10 +17,21 @@ exports.new = (req, res)=>{
 
 
 exports.create = (req,res)=>{
-    //res.send('Created a new product');
-    let product = req.body;
-    model.save(product);
-    res.redirect('/products');
+    fileUpload.upload(req, res, function (err) {
+        if (err) {
+            return res.status(400).send("Error uploading file: " + err.message);
+        }
+        let product = {
+            title: req.body.title,
+            condition: req.body.condition,
+            seller: req.body.seller,  
+            price: parseFloat(req.body.price),
+            details: req.body.details,
+            imageUrl: `/media/items/${req.file.filename}` 
+        };
+        model.save(product);
+        res.redirect('/products');
+    });
 };
 
 

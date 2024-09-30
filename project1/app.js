@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const crypticRoutes = require('./routes/crypticRoutes');
-
+const { upload } = require('./public/middleware/fileUpload');
 
 
 //create app
@@ -26,10 +26,19 @@ app.get('/', (req, res) =>{
     res.render('index');
 })
 
-//app.use('/stories', storyRoutes);
+app.use('/products', crypticRoutes);
+
+app.post('/products', upload, (req, res) => {
+    let product = req.body;
+    product.id = uuidv4();
+    product.imageUrl = '/media/items/' + req.file.filename;
+    products.push(product);
+    res.redirect('/products');
+});
+
 
 app.use((req, res, next) => {
-    let err = new Error("There server cannot locate " + req.url);
+    let err = new Error("The server cannot locate " + req.url);
     err.status = 404;
     next(err);
 });

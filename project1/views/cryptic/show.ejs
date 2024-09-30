@@ -1,13 +1,16 @@
 <%- include('../partials/header.ejs')%>
     <div class = "content">
        <h4><%= product.title%></h4> 
-       <small>Posted <%= product.createdAt%> by <%= product.author%></small>
+       <p>Posted <%= product.createdAt%> by <%= product.title%></p>
         <div id = "product">
-            <%= product.content%>
+            <p>CONDITION: </p><%= product.condition%>
+            <p>PRICE: </p><%= product.price%>
+            <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 200px; height: auto;" />
         </div>
         <form>
             <button type = "submit" formmethod = "GET" formaction="/products/<%= product.id%>/edit">Edit</button>
             <button type = "submit" formmethod = "POST" formaction="/products/<%= product.id%>?_method=DELETE">Delete</button>
         </form>
+        
     </div>
 <%- include('../partials/footer.ejs')%>
