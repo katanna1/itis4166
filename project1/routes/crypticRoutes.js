@@ -7,7 +7,6 @@ const router = express.Router();
 //GET /products: send all products to the user
 router.get('/', controller.index);
 
-
 //GET /products/new: send html form for creating a new product
 router.get('/new', controller.new);
 

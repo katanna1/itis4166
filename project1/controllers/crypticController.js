@@ -5,6 +5,8 @@ const fileUpload = require('../public/middleware/fileUpload');
 //GET /products: send all products to the user
 exports.index = (req, res)=>{
     let products = model.find();
+    //Sort by price in ascending order
+    products.sort((a, b) => a.price - b.price); 
     res.render('./cryptic/index', {products});
 };
 
