@@ -1,16 +1,40 @@
 <%- include('../partials/header.ejs')%>
-<div class = "content">
-    
-    <form method = "POST" action = "/products/<%= product.id%>?_method=PUT" class="new-form">
-        <label for="title" >Title</label>
-        <input type="text" id="title" name="title" value = "<%= product.title%>">
-        
-        <label for="content">Content</label>
-        <textarea rows="5" id="content" name="content" class = "fixed-width"><%= product.content%></textarea>
-        
-        <input type="submit" value="Submit">   
-      
-    </form>
+    <div class = "content">
+        <form method="POST" action="/products/<%= product.id %>?_method=PUT" class="form-container" enctype="multipart/form-data">
+            <!-- Title Field -->
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" value="<%= product.title %>" required>
 
+            <!-- Condition Dropdown -->
+            <label for="condition">Condition</label>
+            <select id="condition" name="condition" required>
+                <option value="new" <%= product.condition === 'new' ? 'selected' : '' %>>New</option>
+                <option value="like-new" <%= product.condition === 'like-new' ? 'selected' : '' %>>Like New</option>
+                <option value="good" <%= product.condition === 'good' ? 'selected' : '' %>>Good</option>
+                <option value="fair" <%= product.condition === 'fair' ? 'selected' : '' %>>Fair</option>
+                <option value="poor" <%= product.condition === 'poor' ? 'selected' : '' %>>Poor</option>
+            </select>
+
+            <!-- Seller Field -->
+            <label for="seller">Seller</label>
+            <input type="text" id="seller" name="seller" value="<%= product.seller %>" required>
+
+            <!-- Price Field -->
+            <label for="price">Price</label>
+            <input type="number" id="price" name="price" min="0" step="0.01" value="<%= product.price %>" required>
+
+            <!-- Details Field -->
+            <label for="details">Description</label>
+            <textarea rows="5" id="description" name="description" class="fixed-width" required><%= product.description %></textarea>
+
+            <!-- Image Upload Field (existing image + option to upload new) -->
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" accept="image/*">
+            <p>Current Image:</p>
+            <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 200px; height: auto;" />
+
+            <!-- Submit Button -->
+            <input type="submit" value="Submit" class="button">
+        </form>
     </div>
-    <%- include('../partials/footer.ejs')%>
+<%- include('../partials/footer.ejs')%>

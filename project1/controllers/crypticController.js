@@ -26,7 +26,7 @@ exports.create = (req,res)=>{
             condition: req.body.condition,
             seller: req.body.seller,  
             price: parseFloat(req.body.price),
-            details: req.body.details,
+            description: req.body.description,
             imageUrl: `/media/items/${req.file.filename}` 
         };
         model.save(product);
@@ -60,13 +60,33 @@ exports.edit = (req, res, next)=>{
 };
 
 exports.update = (req, res, next)=>{
-    let product = req.body;
     let id = req.params.id;
+    let product = model.findById(id);
 
-    if (model.updateById(id, product)) {
-        res.redirect('/products/'+id);
+    if (product) {
+        fileUpload.upload(req, res, function (err) {
+            if (err) {
+                return res.status(400).send("Error uploading file: " + err.message);
+            }
+            product.title = req.body.title;
+            product.condition = req.body.condition;
+            product.seller = req.body.seller;
+            product.price = parseFloat(req.body.price);
+            product.description = req.body.description;
+
+            if (req.file) {
+                product.imageUrl = `/media/items/${req.file.filename}`;
+            }
+            if (model.updateById(id, product)) {
+                res.redirect('/products/' + id);
+            } else {
+                let err = new Error("Cannot update a product with id " + id);
+                err.status = 404;
+                next(err);
+            }
+        });
     } else {
-        let err = new Error("Cannot find a product with id "+id);
+        let err = new Error("Cannot find a product with id " + id);
         err.status = 404;
         next(err);
     }

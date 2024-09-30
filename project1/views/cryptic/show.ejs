@@ -1,16 +1,34 @@
 <%- include('../partials/header.ejs')%>
-    <div class = "content">
-       <h4><%= product.title%></h4> 
-       <p>Posted <%= product.createdAt%> by <%= product.title%></p>
-        <div id = "product">
-            <p>CONDITION: </p><%= product.condition%>
-            <p>PRICE: </p><%= product.price%>
-            <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 200px; height: auto;" />
-        </div>
-        <form>
-            <button type = "submit" formmethod = "GET" formaction="/products/<%= product.id%>/edit">Edit</button>
-            <button type = "submit" formmethod = "POST" formaction="/products/<%= product.id%>?_method=DELETE">Delete</button>
-        </form>
         
-    </div>
+        <!-- MAIN -->
+            <main>
+                <h2><%= product.title%></h2>
+                <div class="container">
+                    <div class="image-column">
+                        <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 200px; height: auto;" class="item-image">
+                    </div>
+                    <div class="details-column">
+                        <small>Posted at <%= product.createdAt%> by <%= product.seller%></small>
+                        <div class="item-details">
+                            <strong>Condition: </strong> <%= product.condition%>
+                        </div>
+                        <div class="item-details">
+                            <strong>Price: </strong>$<%= product.price%>
+                        </div>
+                        <div class="item-details">
+                            <strong>Description: </strong><%= product.description%>
+                        </div>
+                        <div class="item-details">
+                            <strong>Offers Received: </strong>3
+                        </div>
+                        <div class="buttons">
+                            <form>
+                                <button class="button edit-button"  type = "submit" formmethod = "GET" formaction="/products/<%= product.id%>/edit">Edit</button>
+                                <button class="button delete-button"  type = "submit" formmethod = "POST" formaction="/products/<%= product.id%>?_method=DELETE">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
 <%- include('../partials/footer.ejs')%>
