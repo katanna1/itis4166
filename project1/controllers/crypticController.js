@@ -4,18 +4,16 @@ const fileUpload = require('../public/middleware/fileUpload');
 
 //GET /products: send all products to the user
 exports.index = (req, res)=>{
-    //res.send('send all products');
     let products = model.find();
     res.render('./cryptic/index', {products});
 };
-
 
 //GET /products/new: send html form for creating a new product
 exports.new = (req, res)=>{
     res.render('./cryptic/new');
 };
 
-
+// Creating new product
 exports.create = (req,res)=>{
     fileUpload.upload(req, res, function (err) {
         if (err) {
@@ -34,7 +32,7 @@ exports.create = (req,res)=>{
     });
 };
 
-
+// Showing a singular product
 exports.show = (req, res, next)=>{
     let id = req.params.id;
     let product = model.findById(id);
@@ -59,10 +57,12 @@ exports.edit = (req, res, next)=>{
     }
 };
 
+// Updating a product, and then displaying new product with updated information, on products page
 exports.update = (req, res, next)=>{
     let id = req.params.id;
     let product = model.findById(id);
 
+    // Will keep all existing information initially, but update any changes made by user
     if (product) {
         fileUpload.upload(req, res, function (err) {
             if (err) {
@@ -92,6 +92,7 @@ exports.update = (req, res, next)=>{
     }
 };
 
+// Deleting a product
 exports.delete = (req, res, next)=>{
     let id = req.params.id;
     if(model.deleteById(id)) {
@@ -101,4 +102,17 @@ exports.delete = (req, res, next)=>{
         err.status = 404;
         next(err);
     }
+};
+
+// Search for products based on title or description
+exports.search = (req, res) => {
+    const query = req.query.query.toLowerCase(); // not case-sensitive
+    let products = model.find(); 
+
+    // Filter products based on the search query
+    const filteredProducts = products.filter(product => {
+        return product.title.toLowerCase().includes(query) || 
+               product.description.toLowerCase().includes(query);
+    });
+    res.render('./cryptic/index', { products: filteredProducts });
 };

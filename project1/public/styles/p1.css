@@ -1,3 +1,6 @@
+/* DEFAULT CSS FOR PROJECT 1 */
+/* Katrina Wilson */
+
 /* Color Scheme */
 :root {
   --darkred: #600a15;
@@ -46,6 +49,10 @@ h3 {
 
 p {
   color:white;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  padding: .5%;
 }
 
 
@@ -199,7 +206,7 @@ footer p {
   flex-wrap: wrap;
   gap: 25px;
   padding: 3% 0%;
-  margin-top: -20px;
+  margin-top: -15px;
   justify-content: center;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -216,7 +223,7 @@ footer p {
 }
 
 .item:hover {
-  box-shadow: 0 12px 16px rgba(53, 4, 4, 0.613);
+  box-shadow: 0 12px 16px rgba(212, 205, 205, 0.815);
 }
 
 .item img {
@@ -229,12 +236,19 @@ footer p {
   font-size: 20px;
   margin: 10px 0;
   color: var(--darkred);
+  font-weight: 900;
+  text-decoration: underline;
 }
 
-.condition, .price, .offers {
+.condition, .price, .seller {
   font-size: 14px;
   margin: 5px 0;
   color: black;
+}
+
+.item a {
+  color: var(--darkred);
+  text-decoration: none;
 }
 
 

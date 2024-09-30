@@ -1,3 +1,5 @@
+// Middleware for file upload, modified from exercise 3 example.
+
 const multer = require('multer');
 const path = require('path');
 

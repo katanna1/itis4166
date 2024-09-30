@@ -13,7 +13,10 @@
         <!-- HEADER -->
         <header> 
             <a href="/"><img class="logo" src="/media/crpyticlogo.png" alt="Cryptic Jewelry Logo, skull with name under"></a>
-            <input type="text" class="headersearch" placeholder="Search...">
+            <form method="GET" action="/products/search" class="search-form">
+                <input type="text" class="headersearch" name="query" placeholder="Search..." required>
+                <input type="submit" value="Search">
+            </form>
         </header>
         <nav class="nav">
             <a href="/products">Browse</a><br>

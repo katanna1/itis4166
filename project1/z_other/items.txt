@@ -1,4 +1,6 @@
-<%- include('./partials/header.ejs')%>
+Previously a static page.
+
+     <!-- HEADER -->
 
         <!-- MAIN -->
             <main>
@@ -60,5 +62,5 @@
                 </div>
             </main>
 
-<%- include('./partials/footer.ejs')%>
+     <!-- FOOTER -->
 

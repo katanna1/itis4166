@@ -1,14 +1,14 @@
+<!-- Singular Product Page -->
+
 <%- include('../partials/header.ejs')%>
         
         <!-- MAIN -->
-            <main>
                 <h2><%= product.title%></h2>
                 <div class="container">
                     <div class="image-column">
                         <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 200px; height: auto;" class="item-image">
                     </div>
                     <div class="details-column">
-                        <small>Posted at <%= product.createdAt%> by <%= product.seller%></small>
                         <div class="item-details">
                             <strong>Condition: </strong> <%= product.condition%>
                         </div>
@@ -18,9 +18,9 @@
                         <div class="item-details">
                             <strong>Description: </strong><%= product.description%>
                         </div>
-                        <div class="item-details">
-                            <strong>Offers Received: </strong>3
-                        </div>
+                        <br>
+                        <small>Posted at <%= product.createdAt%> by <%= product.seller%></small>
+
                         <div class="buttons">
                             <form>
                                 <button class="button edit-button"  type = "submit" formmethod = "GET" formaction="/products/<%= product.id%>/edit">Edit</button>
@@ -29,6 +29,5 @@
                         </div>
                     </div>
                 </div>
-            </main>
 
 <%- include('../partials/footer.ejs')%>

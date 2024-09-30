@@ -1,12 +1,16 @@
+<!-- All Products Page -->
+
 <%- include('../partials/header.ejs')%>
     <h2>Browse our Selection: </h2>
+    <p>Discover a diverse range of alternative jewelry that combines artistry and elegance. From bold statement pieces to delicate accents, find the perfect accessory to express yourself.</p>
     <div class = "itemscontainer">
         <%if(products.length) {%>
             <%products.forEach(product=>{%>
                 <div class="item">
                     <a href ="/products/<%= product.id%>"><p class="title"><%= product.title%></p>
-                    <p class="condition"><%= product.condition%></p>
-                    <p class="price"><%= product.price%></p>
+                    <p class="condition"><strong>Condition: </strong><%= product.condition%></p>
+                    <p class="price"><strong>Price: $</strong><%= product.price%></p>
+                    <p class="seller"><strong>Sold by: </strong><%= product.seller%></p>
                     <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 200px; height: auto;" />
                     </a>
                 </div>

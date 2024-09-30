@@ -1,5 +1,6 @@
-<%- include('./partials/header.ejs')%>
+Previously a static page.
 
+     <!-- HEADER -->
         <!-- MAIN -->
             <main>
                 <h2>Sell at Cryptic Jewelry!</h2>
@@ -47,5 +48,4 @@
                     </form>
                 </div>
             </main>
-
-<%- include('./partials/footer.ejs')%>
+     <!-- FOOTER -->

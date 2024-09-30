@@ -1,5 +1,9 @@
+<!-- Edit a Product Page -->
+
 <%- include('../partials/header.ejs')%>
     <div class = "content">
+        <h2>Edit Your Post:</h2>
+        <p>Make any revisions to your listing below. Product image will stay the same unless a new valid image is uploaded.</p>    
         <form method="POST" action="/products/<%= product.id %>?_method=PUT" class="form-container" enctype="multipart/form-data">
             <!-- Title Field -->
             <label for="title">Title</label>
@@ -8,11 +12,11 @@
             <!-- Condition Dropdown -->
             <label for="condition">Condition</label>
             <select id="condition" name="condition" required>
-                <option value="new" <%= product.condition === 'new' ? 'selected' : '' %>>New</option>
-                <option value="like-new" <%= product.condition === 'like-new' ? 'selected' : '' %>>Like New</option>
-                <option value="good" <%= product.condition === 'good' ? 'selected' : '' %>>Good</option>
-                <option value="fair" <%= product.condition === 'fair' ? 'selected' : '' %>>Fair</option>
-                <option value="poor" <%= product.condition === 'poor' ? 'selected' : '' %>>Poor</option>
+                <option value="New" <%= product.condition === 'New' ? 'selected' : '' %>>New</option>
+                <option value="Like New" <%= product.condition === 'Like New' ? 'selected' : '' %>>Like New</option>
+                <option value="Good" <%= product.condition === 'Good' ? 'selected' : '' %>>Good</option>
+                <option value="Fair" <%= product.condition === 'Fair' ? 'selected' : '' %>>Fair</option>
+                <option value="Poor" <%= product.condition === 'Poor' ? 'selected' : '' %>>Poor</option>
             </select>
 
             <!-- Seller Field -->
@@ -33,8 +37,8 @@
             <p>Current Image:</p>
             <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 200px; height: auto;" />
 
-            <!-- Submit Button -->
-            <input type="submit" value="Submit" class="button">
+            <!-- Submit Button --> <br> <br>
+            <input class="new-button" type="submit" value="Submit">
         </form>
     </div>
 <%- include('../partials/footer.ejs')%>

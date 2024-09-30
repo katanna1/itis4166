@@ -1,7 +1,10 @@
+<!-- Adding a New Product -->
+
 <%- include('../partials/header.ejs')%>
 <div class="content">
-    <!-- Form action points to the correct route for submitting the new product -->
-    <form action="/products" method="POST" class="form-container" enctype="multipart/form-data">
+    <h2>Sell with Us:</h2>
+    <p>Ready to part with your unique pieces? Join our community of sellers and share your alternative jewelry with the world! Whether it’s handcrafted items, vintage finds, or one-of-a-kind creations, we’re here to help you showcase and sell your treasures. Simply fill out our easy form, upload your images, and let your creativity shine!</p>
+       <form action="/products" method="POST" class="form-container" enctype="multipart/form-data">
 
         <!-- Title Field -->
         <label for="title">Title</label>
@@ -11,11 +14,11 @@
         <label for="condition">Condition</label>
         <select id="condition" name="condition" required>
             <option value="" disabled selected>Select condition</option>
-            <option value="new">New</option>
-            <option value="like-new">Like New</option>
-            <option value="good">Good</option>
-            <option value="fair">Fair</option>
-            <option value="poor">Poor</option>
+            <option value="New">New</option>
+            <option value="Like New">Like New</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Poor">Poor</option>
         </select>
 
         <!-- Seller Field -->
@@ -35,7 +38,7 @@
         <input type="file" id="image" name="image" accept="image/*" required>
 
         <!-- Submit Button -->
-        <input type="submit" value="Submit" class="button">
+        <input class="new-button" type="submit" value="Submit" class="button">
 
     </form>
 </div>

@@ -11,10 +11,11 @@ router.get('/', controller.index);
 //GET /products/new: send html form for creating a new product
 router.get('/new', controller.new);
 
+// GET /products/search: search for products based on the query
+router.get('/search', controller.search);
 
 //POST /products: create a new product
 router.post('/', controller.create);
-
 
 //GET /products/:id: send details of product identified by id
 router.get('/:id', controller.show);
