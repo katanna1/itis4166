@@ -29,7 +29,7 @@
 
             <!-- Details Field -->
             <label for="details">Description</label>
-            <textarea rows="5" id="description" name="description" class="fixed-width" required><%= product.description %></textarea>
+            <textarea rows="5" id="description" name="description" minlength="10" class="fixed-width" required><%= product.description %></textarea>
 
             <!-- Image Upload Field (existing image + option to upload new) -->
             <label for="image">Image</label>
