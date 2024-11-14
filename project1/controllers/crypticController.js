@@ -15,6 +15,7 @@ exports.index = (req, res, next) => {
 // CREATE a new product
 exports.new = (req, res) => {
     res.render('./cryptic/new');
+    req.flash('success', 'Upload Successful!');    
 };
 
 
@@ -22,24 +23,25 @@ exports.new = (req, res) => {
 exports.create = (req, res, next) => {
     fileUpload.upload(req, res, function (err) {
         if (err) {
-            return res.status(400).send("Error uploading file: " + err.message);
+            req.flash('error', 'File upload error! Please try again!');
+            return res.redirect('/products/new'); // Redirect after flash
         }
         const productData = {
             title: req.body.title,
             condition: req.body.condition,
-            seller: req.session.user,  
+            seller: req.session.user,
             price: parseFloat(req.body.price),
             description: req.body.description,
             imageUrl: req.file ? `/media/items/${req.file.filename}` : null
         };
-
         const product = new model(productData);
         product.save()
-        .then(() => res.redirect('/products'))
+        .then(() => {
+            req.flash('success', 'Upload Successful!');
+            res.redirect('/products');
+        })
         .catch(err => {
-            if (err.name === 'ValidationError') {
-                err.status = 400;
-            }
+            req.flash('error', 'Submission did not go through. Please try again!');
             next(err);
         });
     });
@@ -63,13 +65,13 @@ exports.show = (req, res, next) => {
 };
 
 
-// EDIT Product
+// EDIT Product - Render the edit form only
 exports.edit = (req, res, next) => {
     let id = req.params.id;
     model.findById(id)
     .then(product => {
         if (product) {
-            res.render('./cryptic/edit', {product});
+            res.render('./cryptic/edit', {product}); // No flash message here
         } else {
             let err = new Error("Cannot find product with ID " + id);
             err.status = 404;
@@ -79,46 +81,37 @@ exports.edit = (req, res, next) => {
     .catch(err => next(err));
 };
 
-// UPDATE product
+// UPDATE Product - Update the product in the database
 exports.update = (req, res, next) => {
     let id = req.params.id;
-    let product = req.body;
-    model.findByIdAndUpdate(id, product, {useFindAndModify: false, runValidators: true})
-        .then(product => {
-            // if (!product) {
-            //     let err = new Error("Cannot find product with ID " + id);
-            //     err.status = 404;
-            //     return next(err);
-            // }
-
-            fileUpload.upload(req, res, function (err) {
-                if (err) {
-                    return res.status(400).send("Error uploading file: " + err.message);
-                }
-
-                product.title = req.body.title;
-                product.condition = req.body.condition;
-                product.price = parseFloat(req.body.price);
-                product.description = req.body.description;
-
-                if (req.file) {
-                    product.imageUrl = `/media/items/${req.file.filename}`;
-                }
-
-                // Save the updated product
-                product.save()
-                    .then(() => res.redirect('/products/' + id))
-                    .catch(err => {
-                        if (err.name === 'ValidationError') {
-                            err.status = 400;
-                        }
-                        next(err);
-                    });
-            });
+    fileUpload.upload(req, res, function (err) {
+        if (err) {
+            req.flash('error', 'File upload error! Please try again.');
+            return res.redirect(`/products/${id}/edit`);
+        }
+        model.findByIdAndUpdate(id, {
+            title: req.body.title,
+            condition: req.body.condition,
+            price: parseFloat(req.body.price),
+            description: req.body.description,
+            imageUrl: req.file ? `/media/items/${req.file.filename}` : undefined
+        }, { useFindAndModify: false, runValidators: true, new: true })
+        .then(updatedProduct => {
+            if (updatedProduct) {
+                req.flash('success', 'Product updated successfully!');
+                res.redirect(`/products/${id}`);
+            } else {
+                let err = new Error("Cannot find product with ID " + id);
+                err.status = 404;
+                next(err);
+            }
         })
-        .catch(err => next(err));
+        .catch(err => {
+            req.flash('error', 'Update failed! Please try again.');
+            res.redirect(`/products/${id}/edit`);
+        });
+    });
 };
-
 
 // DELETE a product
 exports.delete = (req, res, next) => {
@@ -126,6 +119,7 @@ exports.delete = (req, res, next) => {
     model.findByIdAndDelete(id, {useFindAndModify: false})
     .then(product => {
         if (product) {
+            req.flash('success', 'Delete Successful!');    
             res.redirect('/products');
         } 
     })

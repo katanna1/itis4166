@@ -78,42 +78,39 @@ header {
   overflow-y: hidden;
 }
 .headersearch {
-  left: 75%;
-  padding: .5%;
-  top: 50px;
-  position:absolute;
+  left: 80%;
+  top: 40px;
+  position: absolute;
   width: 15%;
   background-color: white;
-  border-style: solid;
-  border-color: black;
-  border-width: 3px;
+  border: var(--lightgray) 1px solid;
   border-radius: 5%;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  z-index: 2;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 3px; 
+  z-index: 3;
+}
 
+.search-input {
+  margin-top: 5px;
+  width: 85%; 
+  border: none;
+  outline: none;
+  padding: 5px; 
+  z-index: 1;
 }
+
 .search-button {
-  text-align: center;
-  background-color: white;
-  border: 3px solid black;
-  color: var(--charcoal);
-  padding: .25%;
-  border-radius: 5%;
+  background: url('/media/glass.png') no-repeat center center;
+  background-size: contain;
+  border: none;
+  width: 20px; 
+  height: 20px; 
   cursor: pointer;
-  width: fit-content;
-  position: absolute;
-  left:91%;
-  top: 51.5px;
-  font-size: 1rem;
-  font-weight: 900;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  transition: background-color 0.3s ease;
-  z-index: 2;
-  letter-spacing: 1.3px;
-}
-.search-button:hover {
-  background-color: var(--lightgray);
-  border-radius: 5%;
+  z-index: 1;
+  margin-left: 6px; 
+  margin-top: -2px;
 }
 .logo {
   height: 200%;
