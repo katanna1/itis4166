@@ -201,7 +201,7 @@ footer p {
 }
 
 .homepage h2 {
-  color: var(--darkred);
+  color: var(--lightred);
   text-align: center;
   font-size: 20px;
   font-family: fantasy;
@@ -398,8 +398,9 @@ select {
   width:40%;
   padding: 3%;
   font-size: 18px;
-  margin-left:25%;
-  color: white;
+  margin: 0 auto;
+  color: white;  
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .login-button {
@@ -413,6 +414,7 @@ select {
   border-radius: 5%;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   transition: background-color 0.3s ease;
+
 }
 
 .login-button:hover {

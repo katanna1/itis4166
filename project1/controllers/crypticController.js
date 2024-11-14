@@ -31,8 +31,8 @@ exports.create = (req, res, next) => {
             imageUrl: req.file ? `/media/items/${req.file.filename}` : null
         };
 
-        // const product = new model(productData);
-        // let product = new model(req.body);
+        const product = new model(productData);
+        //let product = new model(req.body);
         // product.seller = req.session.user;
         product.save()
         .then(() => res.redirect('/products'))
