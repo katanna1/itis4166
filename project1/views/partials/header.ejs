@@ -14,14 +14,36 @@
         <header> 
             <a href="/"><img class="logo" src="/media/crpyticlogo.png" alt="Cryptic Jewelry Logo, skull with name under"></a>
             <form method="GET" action="/products/search" class="search-form">
-                <input type="text" class="headersearch" name="query" placeholder="Search..." required>
-                <input type="submit" value="Search">
+                <input type="text" class="headersearch" name="query" placeholder="Search for...">
+                <input type="submit" class="search-button" value="Enter">
             </form>
         </header>
         <nav class="nav">
-            <a href="/products">Browse</a><br>
-            <a href="/products/new">Sell</a><br>
-            <a href="">Sign Up</a><br>
-            <a href="">Login</a><br>
-        </nav>
+            <a href="/products">Browse Selection</a><br>
+            <a href="/products/new">Sell Products</a><br>
+            <%if(!user) {%>
+                <a href='/users/new'>Sign Up</a><br>
+                <a href='/users/login'>Login</a><br>
+            <%} else {%>
+                <a href='/users/profile'>Profile</a><br>
+                <a href='/users/logout'>Logout</a><br>
+            <%}%>
+        </nav><br>
+    
+        <% if(errorMessages.length > 0) {%>
+            <% errorMessages.forEach(message=>{%>
+                <div class='error'>
+                    <%=message%>
+                </div>
+                <%});%>
+                    <%}%>
+        
+                        <% if(successMessages.length > 0) {%>
+        
+                            <% successMessages.forEach(message=>{%>
+                                <div class='success'>
+                                    <%=message%>
+                                </div>
+                                <%});%>
+                                    <%}%>
     

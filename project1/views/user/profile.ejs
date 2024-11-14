@@ -1,0 +1,22 @@
+
+<%- include('../partials/header.ejs')%>
+    <h2>Welcome, <%=user.firstName%></h2>
+    <% if (products.length) { %>
+        <p>You have listed the following products:</p>
+        <div class="profile-itemscontainer">
+            <% products.forEach(product => { %>
+                <div class="profile-item">
+                    <a href="/products/<%= product.id %>">
+                        <p class="profile-title"><%= product.title %></p>
+                        <p class="profile-condition"><strong>Condition: </strong><%= product.condition %></p>
+                        <p class="profile-price"><strong>Price: $</strong><%= product.price %></p>
+                        <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 200px; height: auto;" />
+                    </a>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p>You have not listed any products yet.</p>
+    <% } %>
+    
+<%- include('../partials/footer.ejs')%>

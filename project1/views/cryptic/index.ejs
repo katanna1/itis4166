@@ -1,22 +1,25 @@
-<!-- All Products Page -->
+<%- include('../partials/header.ejs') %>
 
-<%- include('../partials/header.ejs')%>
-    <h2>Browse our Selection: </h2>
-    <p>Discover a diverse range of alternative jewelry that combines artistry and elegance. From bold statement pieces to delicate accents, find the perfect accessory to express yourself.</p>
-    <div class = "itemscontainer">
-        <%if(products.length) {%>
-            <%products.forEach(product=>{%>
-                <div class="item">
-                    <a href ="/products/<%= product.id%>"><p class="title"><%= product.title%></p>
-                    <p class="condition"><strong>Condition: </strong><%= product.condition%></p>
-                    <p class="price"><strong>Price: $</strong><%= product.price%></p>
-                    <p class="seller"><strong>Sold by: </strong><%= product.seller%></p>
+<h2>Browse our Selection: </h2>
+<p>Discover a diverse range of alternative jewelry that combines artistry and elegance. From bold statement pieces to delicate accents, find the perfect accessory to express yourself.</p>
+
+
+<% if (products.length) { %>
+    <div class="itemscontainer">
+        <% products.forEach(product => { %>
+            <div class="item">
+                <a href="/products/<%= product.id %>">
+                    <p class="title"><%= product.title %></p>
+                    <p class="condition"><strong>Condition: </strong><%= product.condition %></p>
+                    <p class="price"><strong>Price: $</strong><%= product.price %></p>
+                    <p class="seller"><strong>Seller: </strong><%= product.seller.firstName %> <%= product.seller.lastName %></p>
                     <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 200px; height: auto;" />
-                    </a>
-                </div>
-            <%});
-        } else {%>
-            <p>There are no products to display.</p>
-        <%}%>
+                </a>
+            </div>
+        <% }); %>
     </div>
-<%- include('../partials/footer.ejs')%>
+<% } else { %>
+    <p>There are no products listed yet.</p>
+<% } %>
+
+<%- include('../partials/footer.ejs') %>

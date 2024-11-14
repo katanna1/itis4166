@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const crypticSchema = new Schema({
     title: { type: String, required: [true, 'Title is required'] },
-    seller: { type: String, required: [true, 'Seller is required'] }, 
+    seller: {type: Schema.Types.ObjectId, ref:'User'},
     condition: { 
         type: String, 
         required: [true, 'Condition is required'],

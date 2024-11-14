@@ -3,12 +3,15 @@
 
 /* Color Scheme */
 :root {
+  --lightred: #8a2633;
   --darkred: #600a15;
   --darkerred:#3f060e;
   --charcoal: #403639;
   --lightgray: #d7d6d6;
   --forestgreen: #043f06;
   --hovergray:rgba(234, 232, 232, 0.229);
+  --success: rgb(109, 153, 109);
+  --error: rgb(170, 76, 76);
   /*   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;   */
 }
 
@@ -62,6 +65,7 @@ header {
   width: 100%;
   background-color: var(--darkred);
   padding:1%;
+  overflow-y: hidden;
 }
 
 .headersearch {
@@ -78,10 +82,37 @@ header {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.search-button {
+  background-color: white;
+  border: 3px solid black;
+  padding: .45%;
+  border-radius: 5%;
+  cursor: pointer;
+  width: 4%;
+  position: absolute;
+  left:70.7%;
+  top: 50px;
+  font-size: .85rem;
+  font-weight: 900;
+  font-variant: all-petite-caps;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: var(--lightgray);
+  border-radius: 5%;
+}
+
 .logo {
   height: 200%;
   margin-left:-45px;
   margin-top: -45px;
+  transition: transform 0.3s ease; 
+}
+
+.logo:hover {
+  transform: scale(1.04); 
 }
 
 .nav {
@@ -91,10 +122,9 @@ header {
   right: 0%;
   position:absolute;
   width: 20%;
-  height: 14%;
+  height: 15%;
   border-left-style: double;
   border-left-width: 15px;
-
 }
 
 .nav a {
@@ -104,13 +134,16 @@ header {
   font-variant: all-petite-caps;
   font-size: 22px;
   font-weight: bold;
+  transition: background-color 0.2s ease;
+  border-radius: 15%;
+  padding: .75%;
 }
 
 .nav a:hover {
   background-color: var(--hovergray);
   border-radius: 15%;
-  box-shadow: 0 2px 8px rgba(223, 220, 220, 0.401);
-
+  box-shadow: 2px 2px 2px var(--hovergray);
+  transition: background-color 0.2s ease;
 }
 
 .nav a:visited {
@@ -118,7 +151,6 @@ header {
 }
 
 footer {
-  position: relative;
   text-align: center;
   bottom: 0;
   left:0;
@@ -192,10 +224,11 @@ footer p {
   text-decoration: none;
   background-color: #3f060eab;
   color: white;
+  transition: background-color 0.3s ease;
 }
 
 .homepage a:hover{
-  background-color: var(--hovergray);
+  background-color: var(--lightred);
   border-radius: 10%;
 }
 
@@ -291,7 +324,9 @@ select {
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;
+  border-radius: 5%;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transition: background-color 0.3s ease;
 }
 
 .new-button:hover {
@@ -347,6 +382,7 @@ select {
   cursor: pointer;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: white;
+  transition: background-color 0.3s ease;
 }
 
 .edit-button {
@@ -355,4 +391,103 @@ select {
 
 .delete-button {
   background-color: var(--darkerred);
+}
+
+
+.user-form {
+  width:40%;
+  padding: 3%;
+  font-size: 18px;
+  margin-left:25%;
+  color: white;
+}
+
+.login-button {
+  width: 25%;
+  padding: 2%;
+  background-color: var(--darkred);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 5%;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: var(--lightred);
+}
+
+
+.success {
+  background: var(--success);
+  color: #fff;
+  width: 40%;
+  margin: 0 auto 5% auto;
+  text-align: center;
+  padding: 0.5rem 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.error {
+  background: var(--error);
+  color: #fff;
+  width: 40%;
+  margin: 0 auto 5% auto;
+  text-align: center;
+  padding: 0.5rem 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* All item selection page */
+.profile-itemscontainer {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 2% 0%;
+  margin: 5px auto 30px;
+  justify-content: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.profile-item {
+  background-color: #fff;
+  border-radius: 10%;
+  text-align: center;
+  text-decoration: none;
+  width: 150px; 
+  padding: 3%;
+  box-shadow: 0 4px 8px rgba(12, 0, 0, 0.678);
+  transition: transform 0.3s, box-shadow 0.2s;
+}
+
+.profile-item:hover {
+  box-shadow: 0 12px 16px rgba(212, 205, 205, 0.815);
+}
+
+.profile-item img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.profile-title {
+  font-size: 20px;
+  margin: 10px 0;
+  color: var(--darkred);
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.profile-condition, .profile-price, .profile-seller {
+  font-size: 14px;
+  margin: 5px 0;
+  color: black;
+}
+
+.profile-item a {
+  color: var(--darkred);
+  text-decoration: none;
 }

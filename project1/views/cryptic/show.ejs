@@ -19,14 +19,16 @@
                             <strong>Description: </strong><%= product.description%>
                         </div>
                         <br>
-                        <small>Posted at <%= product.createdAt%> by <%= product.seller%></small>
+                        <small>Posted at <%= product.createdAt%> by <%= product.seller.firstName + ' ' + product.seller.lastName%></small>
 
-                        <div class="buttons">
-                            <form>
-                                <button class="button edit-button"  type = "submit" formmethod = "GET" formaction="/products/<%= product.id%>/edit">Edit</button>
-                                <button class="button delete-button"  type = "submit" formmethod = "POST" formaction="/products/<%= product.id%>?_method=DELETE">Delete</button>
-                            </form>
-                        </div>
+                        <%if(user == product.seller._id){%>
+                            <div class="buttons">
+                                <form>
+                                    <button class="button edit-button"  type = "submit" formmethod = "GET" formaction="/products/<%= product.id%>/edit">Edit</button>
+                                    <button class="button delete-button"  type = "submit" formmethod = "POST" formaction="/products/<%= product.id%>?_method=DELETE">Delete</button>
+                                </form>
+                            </div>
+                        <%}%> 
                     </div>
                 </div>
 
