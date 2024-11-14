@@ -1,11 +1,10 @@
 const model = require('../models/user');
 const Product = require('../models/cryptic');
 
+
 exports.new = (req, res)=>{
     return res.render('./user/new');
 };
-
-
 
 exports.create = (req, res, next)=>{
         let user = new model(req.body);
@@ -77,6 +76,3 @@ exports.logout = (req, res, next)=>{
     });
    
  };
-
-
-
