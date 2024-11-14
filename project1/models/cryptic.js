@@ -9,7 +9,7 @@ const crypticSchema = new Schema({
         required: [true, 'Condition is required'],
         enum: ['New', 'Like New', 'Good', 'Fair', 'Poor'] 
         },
-    price: { type: Number, required: [true, 'Price is required'] },
+    price: { type: Number, min: [.01, 'Price must be at least $0.01.'], required: [true, 'Price is required'] },
     imageUrl: { type: String, required: [true, 'Image URL is required'] },
     description: { 
         type: String, 

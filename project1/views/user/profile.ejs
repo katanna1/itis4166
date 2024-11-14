@@ -1,6 +1,6 @@
 
 <%- include('../partials/header.ejs')%>
-    <h2>Welcome, <%=user.firstName%></h2>
+    <h2>Welcome, <%=user.firstName%>!</h2>
     <% if (products.length) { %>
         <p>You have listed the following products:</p>
         <div class="profile-itemscontainer">
@@ -16,7 +16,7 @@
             <% }) %>
         </div>
     <% } else { %>
-        <p>You have not listed any products yet.</p>
+        <br><br><br><br><h4>You have not listed any products yet.</h4><br><br><br><br>
     <% } %>
     
 <%- include('../partials/footer.ejs')%>
